@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/aframe-v0.2.0.min.js"></script>
+    <!--<script src="bower_components/aframe/dist/aframe.js"></script>-->
+    <script src="../js/aframe-stereo-component.js"></script>
+    <script src="../js/aframe-video-controls.js"></script>
+
+</head>
+<body>
+
+    <a-scene>
+
+    <a-assets>
+
+
+      <video id="test" src="../media/cascada.mp4">
+      </video>
+
+    </a-assets>
+
+      <a-camera position="0 0 0" stereocam="eye:left;">
+
+          <a-cursor id="cursor" color="yellow"></a-cursor>
+
+      </a-camera>
+
+      <a-entity geometry="primitive: sphere;
+                      radius: 100;
+                      segmentsWidth: 64;
+                      segmentsHeight: 64;"
+              material="shader: flat; src:#test;"
+              scale="-1 1 1" stereo="eye:left;mode:half;" >
+      </a-entity>
+
+      <a-entity geometry="primitive: sphere;
+                      radius: 100;
+                      segmentsWidth: 64;
+                      segmentsHeight: 64;"
+              material="shader: flat; src:#test;"
+              scale="-1 1 1" stereo="eye:right;mode:half;">
+      </a-entity>
+
+      <a-entity video-controls="src:#test"></a-entity>
+
+    </a-scene>
+
+
+</body>
+</html>
